@@ -18,8 +18,8 @@
                     <ul class="navbar-nav ml-auto">
                         <li href="#tentang" data-toggle="collapse" class="nav-item">Tentang Kami</li>
                         <li href="#artikel" class="nav-item">Artikel</li>
-                        <button class="login btn btn-success nav-item">Login</button>
-                        <button class="order btn btn-warning nav-item">Order Now</button>
+                        <li class="login btn btn-success nav-item">Login</li>
+                        <li class="order btn btn-warning nav-item">Order Now</li>
                     </ul>
                 </div>
             </nav>
@@ -32,35 +32,15 @@
         <main>
             <div class="feature">
                 <h2>Mengapa Anda Perlu Menggunakan Food Delivery?</h2>
-                <article class="feature-row">
-                    <div class="feature-card">
-                        <img class="feature-image" src="/assets/ic_feature_1.png">
-                        <h3 class="feature-desc">Makanan Tetap Aman Disajikan</h3>
-                    </div>
-                    <div class="feature-card">
-                        <img class="feature-image" src="/assets/ic_feature_2.png">
-                        <h3 class="feature-desc">Pengiriman Tepat Waktu</h3>
-                    </div>
-                    <div class="feature-card">
-                        <img class="feature-image" src="/assets/ic_feature_3.png">
-                        <h3 class="feature-desc">Garansi Uang Kembali 100%</h3>
-                    </div>
-                </article>
+                <feature-component></feature-component>
             </div>
             <div class="article">
+                <h2>Top 3 Menu Makanan Terpopuler</h2>
+                <list-article></list-article>
             </div>
             <div class="join">
                 <h2>Bergabunglah bersama kami di Food Delivery</h2>
-                <div class="card-join">
-                    <div class="card-join-item">
-                        <img class="card-join-img" src="../assets/img_driver.png">
-                        <button type="button" class="btn-join">Driver</button>
-                    </div>
-                    <div class="card-join-item">
-                        <img class="card-join-img" src="../assets/img_merchant.png">
-                        <button type="button" class="btn-join">Merchant</button>
-                    </div>
-                </div>
+                <join-component></join-component>
             </div>
             <!--<aside>
                 <h2>Tim Kami</h2>
@@ -91,7 +71,7 @@
                     </ul>
                 </div>
                 <div class="footer-item">
-                    <h2>NewsLetter </h2>
+                    <h2>Newsletter </h2>
                     <div class="subscribe-item link-item"> 
                         <p>Bergabunglah bersama kami untuk mendapatkan informasi lebih lanjut</p>
                         <input type="email" class="email-subscribe" placeholder="masukkan email anda">
@@ -101,5 +81,7 @@
             </div>
             <h3 class="footer-copyright">Food Deliver@2020</h3>
         </footer>
+
+        <!--<script src="../dist/bundle.js"></script>-->
     </body>
 </html>

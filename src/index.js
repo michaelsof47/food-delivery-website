@@ -1,6 +1,10 @@
 import main from "./scripts/homepage.js";
 import "./styles/homepage.css";
+
 import "./scripts/component/register-app.js";
+import "./scripts/component/feature-component.js";
+import "./scripts/component/join-component.js";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "jquery/dist/jquery.min.js";

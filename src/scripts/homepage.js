@@ -1,26 +1,54 @@
 import "./component/register-app.js";
+import "./component/list-article.js";
+import dataArticle from "./data/data-article.js";
+import getVoucher from "./data/get-voucher.js";
 
-
-function main()
+const main = () =>
 {
+	//init
+	const btn_order = document.querySelector(".order");
+	const btn_login = document.querySelector(".login");
+	const email_form = document.querySelector("email-form");
+	const btn_subscribe = document.querySelector(".email-subscribe-submit");
+	const list_article = document.querySelector(".article-row");
+	
+
+	const showArticle = async () =>
+	{
+		try
+		{
+			const result = await dataArticle.getArticle();
+			renderResult(result);
+		}
+		catch(message_value)
+		{
+			alert(message_value);
+		}
+	}
+	list_article.innerHTML = showArticle;
+
+	const renderResult = results =>
+	{
+		list_article.articles = results;
+	}
+	
 	const message_value = (message = "Silahkan hubungi kami untuk lebih lanjut") =>
 	{
 		alert(message);
-	}
+	};
 
-	const btn_order = document.querySelector(".order");
+	
 	btn_order.addEventListener("click",() =>
 	{
 		message_value("Fitur ini akan tersedia dalam beberapa minggu kedepan");
 	});
 
-	const btn_login = document.querySelector(".login");
+	
 	btn_login.addEventListener("click",() =>
 	{
 		message_value("Fitur ini akan tersedia dalam beberapa hari lagi");
 	})
 
-	const btn_subscribe = document.querySelector(".email-subscribe-submit");
 	btn_subscribe.addEventListener("click",() =>
 	{
 		const edt_subscribe = document.querySelector(".email-subscribe");
@@ -36,20 +64,20 @@ function main()
 			})
 	})
 
-	const email_form = document.querySelector("email-form");
-	const onProcess = () =>
+	const onProcess = async () =>
 	{
-		let email_input = email_form.value;
-		email_form.checkVoucherEmail("",email_input)
-		.then(message_value =>
-			{
-				alert(message_value);
-				document.querySelector(".email-user").value = "";
-			})
-		.catch(message_value =>
-			{
-				alert(message_value);
-			})
+		try
+		{
+			let email_input = document.querySelector(".email-user").value;
+			//let email_input = document.querySelector(".email-user").value; sudah menggunakan bagian ini tapi nilai belum bisa masuk ke custom element
+			const value = await getVoucher.checkVoucher(email_input);
+			alert(value);
+			document.querySelector(".email-user").value = "";
+		}
+		catch(message)
+		{
+			message_value(message);
+		}
 	}
 
 	email_form.clickEvent = onProcess;

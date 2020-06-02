@@ -17,28 +17,6 @@ class EmailForm extends HTMLElement
         this.render();
     }
 
-    get value()
-    {
-        return document.querySelector(".email-user");
-    }
-
-    checkVoucherEmail(value, email_input)
-    {
-        return new Promise((resolve,reject) =>
-        {
-            if(email_input !== "" && email_input !== null)
-            {
-                const value = "Terima kasih atas partisipasi anda untuk mengisi email di bawah ini, Mohon ditunggu 4-5 hari kedepan";
-                resolve(value);
-            }
-            else
-            {
-                const value = "Gagal Masuk";
-                reject(value);
-            }
-        })
-    }
-
     render()
     {
         this.shadowDOM.innerHTML = 
@@ -74,8 +52,10 @@ class EmailForm extends HTMLElement
                 font-weight     : bold;
                 border-radius   : 20px;
                 margin-left     : 33px;
-                margin-top      : 15px;
-                margin-bottom   : 15px;
+                margin-top      : 7px;
+                margin-bottom   : -1px;
+                background-color: darkolivegreen;
+                color           : white;
             }
 
             @media screen and (max-width:1100px)
@@ -101,6 +81,7 @@ class EmailForm extends HTMLElement
                     width           : 91%;
                     margin-top      : 10px;
                     margin-bottom   : 10px;
+                    border-radius   : 10px;
                 }
 
                 .btn_email
@@ -109,6 +90,9 @@ class EmailForm extends HTMLElement
                     margin-left     : -5px;
                     margin-top      : 10px;
                     margin-bottom   : 10px;
+                    border-radius   : 10px;
+                    background-color: darkolivegreen;
+                    color           : white;
                 }
                 }
         </style>
