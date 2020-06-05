@@ -1,19 +1,26 @@
 class getVoucher
 {
-
     static checkVoucher(email_value)
     {
-        if(email_value !== "" && email_value !== null)
+        let message_alert = (message = "Data Tidak Berhasil") =>
         {
-            const value = "Terima kasih atas partisipasi anda untuk mengisi email di bawah ini, Mohon ditunggu 4-5 hari kedepan";
-            return Promise.resolve(value);
+            alert(message);
+        }
+
+        let email_full = `${email_value}@gmail.com`;
+
+        if(email_full !== "" && email_full !== null)
+        {
+            message_alert = "Terima kasih atas partisipasi anda untuk mengisi email di bawah ini, Mohon ditunggu 4-5 hari kedepan";
+            return Promise.resolve(message_alert);
             
         }
         else
         {
-            const value = "Gagal Masuk";
-            return Promise.reject(value);
+            message_alert = "Gagal Masuk";
+            return Promise.reject(message_alert);
         }
+        
     }
 }
 

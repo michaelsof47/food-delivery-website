@@ -3,7 +3,7 @@ class dataArticle
     static getArticle()
     {
         const baseUrl = "https://www.themealdb.com/api/json/v1/1/";
-        fetch(`${baseUrl}/categories.php`)
+        return fetch(`${baseUrl}/categories.php`)
             .then(response =>
                 {
                     return response.json();
@@ -11,9 +11,9 @@ class dataArticle
                 )
             .then(responseJson =>
                 {
-                    if(responseJson.articles)
+                    if(responseJson.categories)
                     {
-                        return Promise.resolve(responseJson.articles);
+                        return Promise.resolve(responseJson.categories);
                     }
                     else
                     {

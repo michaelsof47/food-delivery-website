@@ -1,17 +1,15 @@
-import "./component/register-app.js";
+import getVoucher from "./data/get-voucher.js";
 import "./component/list-article.js";
 import dataArticle from "./data/data-article.js";
-import getVoucher from "./data/get-voucher.js";
 
-const main = () =>
+const homepage = () =>
 {
 	//init
-	const btn_order = document.querySelector(".order");
-	const btn_login = document.querySelector(".login");
-	const email_form = document.querySelector("email-form");
+	//const btn_order = document.querySelector(".order");
+	//const btn_login = document.querySelector(".login");
+	const btn_register = document.querySelector(".btn_email");
+	const list_article = document.querySelector("list-article");
 	const btn_subscribe = document.querySelector(".email-subscribe-submit");
-	const list_article = document.querySelector(".article-row");
-	
 
 	const showArticle = async () =>
 	{
@@ -20,12 +18,12 @@ const main = () =>
 			const result = await dataArticle.getArticle();
 			renderResult(result);
 		}
-		catch(message_value)
+		catch(e)
 		{
-			alert(message_value);
+			message_value(e);
 		}
 	}
-	list_article.innerHTML = showArticle;
+	showArticle();
 
 	const renderResult = results =>
 	{
@@ -38,7 +36,7 @@ const main = () =>
 	};
 
 	
-	btn_order.addEventListener("click",() =>
+	/*btn_order.addEventListener("click",() =>
 	{
 		message_value("Fitur ini akan tersedia dalam beberapa minggu kedepan");
 	});
@@ -47,7 +45,7 @@ const main = () =>
 	btn_login.addEventListener("click",() =>
 	{
 		message_value("Fitur ini akan tersedia dalam beberapa hari lagi");
-	})
+	})*/
 
 	btn_subscribe.addEventListener("click",() =>
 	{
@@ -64,24 +62,26 @@ const main = () =>
 			})
 	})
 
-	const onProcess = async () =>
+	btn_register.addEventListener("click", () =>
 	{
 		try
 		{
-			let email_input = document.querySelector(".email-user").value;
-			//let email_input = document.querySelector(".email-user").value; sudah menggunakan bagian ini tapi nilai belum bisa masuk ke custom element
-			const value = await getVoucher.checkVoucher(email_input);
-			alert(value);
-			document.querySelector(".email-user").value = "";
+			let register_form = document.querySelector(".email-user").value;
+			getVoucher.checkVoucher(register_form)
+			.then((message) =>
+			{
+				message_value(message);
+			}
+			).catch((error) =>
+			{
+				message_value(error);
+			});
 		}
-		catch(message)
+		catch (e)
 		{
-			message_value(message);
+			alert(`Error pada ${e}`);
 		}
-	}
-
-	email_form.clickEvent = onProcess;
-
+	})
 }
 
-export default main;
+export default homepage;

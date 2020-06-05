@@ -17,6 +17,7 @@ class listArticleItem extends HTMLElement
         this.shadowDOM.innerHTML = 
         `
             <style>
+
                 .article-card
                 {
                     width           : 324px;
@@ -62,12 +63,12 @@ class listArticleItem extends HTMLElement
                     }
                 }
             </style>
-        <div class="article-card">
-            <img class="card-item-image" id="card-image" src="${this._article.strCategoryThumb}">
-            <p class="card-item-detail">${this._article.strCategory}</p>
-        </div>
+            <div class="article-card">
+                <img class="card-item-image" id="card-image" src="${this._article.strCategoryThumb}">
+                <p class="card-item-detail">${this._article.strCategory}</p>
+            </div>
         `;
     }
 }
 
-customElements.define("list-article-item",listArticleItem);
+customElements.get('list-article-item') || customElements.define('list-article-item',listArticleItem);

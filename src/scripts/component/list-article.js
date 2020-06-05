@@ -16,6 +16,25 @@ class listArticle extends HTMLElement
 
     render()
     {
+        this.shadowDOM.innerHTML =
+        `
+        <style>
+            list-article-item
+            {
+                margin-left : 10px;
+                margin-right: 10px;
+            }
+            
+            @media screen and (max-witdth:800px)
+            {
+                list-article-item
+                {
+                    margin-top : 31px;
+                }
+            }
+        </style>
+        `
+
         this._articles.forEach(article =>
             {
                 const articleElementItem = document.createElement("list-article-item");
@@ -25,4 +44,4 @@ class listArticle extends HTMLElement
     }
 }
 
-customElements.define("list-article",listArticle);
+customElements.get('list-article') || customElements.define('list-article',listArticle);

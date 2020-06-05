@@ -94,4 +94,4 @@ class joinComponent extends HTMLElement
     }
 }
 
-customElements.define("join-component",joinComponent);
+customElements.get('join-component') || customElements.define('join-component',joinComponent);
